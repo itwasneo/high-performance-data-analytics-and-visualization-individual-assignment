@@ -1,0 +1,103 @@
+html { height: 100%; }
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s, color 0.25s;
+}
+
+#root { height: 100%; }
+
+/* ── Theme tokens ── */
+:root {
+  --bg:          #ffffff;
+  --surface:     #f5f5f5;
+  --text:        #1a1a1a;
+  --muted:       #666666;
+  --border:      #d0d0d0;
+  --btn-bg:      #ebebeb;
+  --btn-text:    #333;
+  --btn-active-bg:   #0055cc;
+  --btn-active-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg:          #0d1117;
+  --surface:     #161b22;
+  --text:        #e6edf3;
+  --muted:       #8b949e;
+  --border:      #30363d;
+  --btn-bg:      #21262d;
+  --btn-text:    #c9d1d9;
+  --btn-active-bg:   #388bfd;
+  --btn-active-text: #ffffff;
+}
+
+/* ── Layout toggle buttons (hierarchy) ── */
+.layout-btn {
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.layout-btn:first-child { border-radius: 4px 0 0 4px; }
+.layout-btn:last-child  { border-radius: 0 4px 4px 0; border-left: none; }
+.layout-btn.active {
+  background: var(--btn-active-bg);
+  color: var(--btn-active-text);
+  border-color: var(--btn-active-bg);
+}
+
+/* ── Theme toggle switch ── */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--muted);
+  user-select: none;
+}
+.theme-switch input { display: none; }
+.switch-track {
+  width: 34px;
+  height: 18px;
+  background: var(--border);
+  border-radius: 9px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.theme-switch input:checked ~ .switch-track { background: #388bfd; }
+.switch-track::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+}
+.theme-switch input:checked ~ .switch-track::after { transform: translateX(16px); }
+
+/* ── D3 brush ── */
+.brush .selection {
+  fill: rgba(80, 130, 240, 0.18);
+  stroke: #5082f0;
+  stroke-width: 1;
+}
+[data-theme="dark"] .brush .selection {
+  fill: rgba(100, 170, 255, 0.22);
+  stroke: #64aaff;
+}

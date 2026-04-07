@@ -1,0 +1,28 @@
+.App {
+    text-align: center;
+    height: 100%;
+}
+#MultiviewContainer{
+    height: 100%;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.col{
+    flex-grow: 1; /* all .col elements have the same importance */
+    flex-basis: 0; /* do not use auto to avoid size depends on content*/
+}
+
+/* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.col2{
+    float: left;
+    width: 50%;
+} */
